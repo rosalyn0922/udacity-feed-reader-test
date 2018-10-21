@@ -1,0 +1,19 @@
+{
+  "name": "udacity-feed-reader-test",
+  "version": "1.0.0",
+  "description": "demonstrate testing using Jasmine unit test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rosalyn0922/udacity-feed-reader-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rosalyn0922/udacity-feed-reader-test/issues"
+  },
+  "homepage": "https://github.com/rosalyn0922/udacity-feed-reader-test#readme"
+}
