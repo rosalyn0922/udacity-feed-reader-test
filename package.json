@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/rosalyn0922/udacity-feed-reader-test/issues"
   },
-  "homepage": "https://github.com/rosalyn0922/udacity-feed-reader-test#readme"
+  "homepage": "https://github.com/rosalyn0922/udacity-feed-reader-test#readme",
+  "devDependencies": {
+    "jasmine": "^3.2.0",
+    "live-server": "^1.2.0"
+  }
 }
