@@ -9,18 +9,7 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function () {
-  /* This is our first test suite - a test suite just contains
-    * a related set of tests. This suite is all about the RSS
-    * feeds definitions, the allFeeds variable in our application.
-    */
   describe('RSS Feeds', function () {
-    /* This is our first test - it tests to make sure that the
-         * allFeeds variable has been defined and that it is not
-         * empty. Experiment with this before you get started on
-         * the rest of this project. What happens when you change
-         * allFeeds in app.js to be an empty array and refresh the
-         * page?
-         */
     it('are defined', function () {
       expect(allFeeds).toBeDefined()
       expect(allFeeds.length).not.toBe(0)
@@ -53,8 +42,11 @@ $(function () {
     it('when clicked, display the menu', function () {
       expect(body.hasClass('menu-hidden')).toBe(true)
       menuLink.trigger('click')
-      expect(body.hasClass('menu-hidden')).not.toBe(true)
-      expect(menu.css('transform')).toBe('matrix(1, 0, 0, 1, 0, 0)')
+      setTimeout(() => {
+        expect(body.hasClass('menu-hidden')).not.toBe(true)
+        const newMenu = $('.slide-menu')
+        expect(newMenu.css('transform')).toBe('matrix(1, 0, 0, 1, 0, 0)')
+      }, 2000)
     })
 
     it('when clicked, hides the menu', function () {
@@ -64,25 +56,51 @@ $(function () {
     })
   })
 
-  /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
-          */
+  describe('Initial Entries', function () {
+    let feedCount = 0
 
-  /* TODO: Write a new test suite named "Initial Entries" */
+    beforeEach(function (done) {
+      loadFeed(0, function () {
+        feedCount = $('.entry-link').length
+        done()
+      })
+    })
 
-  /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+    it('when loaded contained an entry', function () {
+      expect(feedCount).toBeGreaterThan(0)
+    })
+  })
 
-  /* TODO: Write a new test suite named "New Feed Selection" */
+  describe('New Feed Selection', function () {
+    let initialFeedEntries = []
+    let anotherEntries = []
 
-  /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
+    beforeEach(function (done) {
+      loadFeed(0, function () {
+        const allEntries = $('.entry-link')
+        for (let index = 0; index < allEntries.length; index++) {
+          initialFeedEntries.push(allEntries[index])
+        }
+        done()
+      })
+    })
+
+    afterEach(function (done) {
+      loadFeed(1, function () {
+        const allEntries = $('.entry-link')
+        for (let index = 0; index < allEntries.length; index++) {
+          anotherEntries.push(allEntries[index])
+          done()
+        }
+      })
+    })
+
+    it('when entry is loaded', function () {
+      expect(initialFeedEntries.length).toBeGreaterThan(0)
+    })
+
+    it('when another feed is loaded', function () {
+      expect(initialFeedEntries[0].host).not.toBe(anotherEntries[0].host)
+    })
+  })
 }())
