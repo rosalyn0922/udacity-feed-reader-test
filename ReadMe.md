@@ -1,5 +1,24 @@
 #Udacity Feed Reader Test by Rosalyn Guerrero
 
+## Passing Test
+
+### RSS Feeds
+  1. Feeds are defined - All feeds must be defined and must have at least one feed
+  2. URLs in feed are defined
+  3. Name in feed are defined
+
+### The Menu
+  1. Should be hidden by default
+  2. Displays the menu when clicked
+  3. Hides the menu when clicked
+
+### Initial Entries
+  1. Entries must have at least one entry
+  
+### New feed selection (demonstrates the before and after to test asynchronous request)
+  1. Initial entry is loaded and have at least one feed
+  2. When a different feed is loaded, first entries must be different via Host
+
 ## Project Overview
 
 In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.
