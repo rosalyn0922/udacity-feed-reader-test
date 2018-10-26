@@ -1,5 +1,22 @@
 #Udacity Feed Reader Test by Rosalyn Guerrero
 
+## How to clone this application
+
+1. Go to your terminal and type the following code to clone the repository
+
+`
+  git clone https://github.com/rosalyn0922/udacity-feed-reader-test.git
+`
+
+2. To modify the test, simple go to the folder jasmine/spec and open feedreader.js
+
+
+## How to run the test
+
+1. Simple open the index.html in your browser
+2. Scroll to the very bottom of the page to see all test that either passed or failed. All failed test are marked as such and background will turn red
+![Running Jasmine Test](assets/running-jasmine-test.png "Running Jasmine Test")
+
 ## Passing Test
 
 ### RSS Feeds
